@@ -20,10 +20,33 @@ def _input_args():
     # arguments = sys.argv[1:]  # ptn1: get args from command line option
     arguments = input().split()  # ptn2: get args from 1 line prompt with space separated.
 
+    # for multi-line input, use this.
+    # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''])
+
     # Cast elements If you need.
     # arguments = map(int, arguments)  # cast elements to int for example.
 
     return arguments
+
+
+def _get_args_from_multiple_lines(end_of_lines_char=['']):
+    """Get arguments from multiple lines standard input.
+
+    :param end_of_lines_char: Strings that indicate the end of lines.
+    :type end_of_lines_char: list of str
+    :return: args
+    :rtype list of str
+    """
+    args = []
+    while True:
+        try:
+            arg = input()
+            if arg in end_of_lines_char:
+                break
+            args.append(arg)
+        except EOFError:  # Supported for EOF Style. (Very Rare case)
+            break
+    return args
 
 
 def _export_result(output):
