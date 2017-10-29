@@ -53,10 +53,10 @@ def _export_result(output):
     # Comment-out appropriate output pattern depends on subject.
 
     # sys.stdout.write(output)  # No Line Feed, and arg must be string. for single value output.
-    # print(output)  # With Line Feed, and automatically eval and cast args. for single value output.
+    # print(output)  # Output automatically evaluated and cast to strings. LF at the end. for single value output.
     print(output, end='')  # No Line Feed version of above. for single value output.
-    # print(','.join(map(str, array_to_output))) # Print array elements with comma separated. for multi value.
-    # print('{}, {}'.format(arg1, arg2, end=''))  # Same results, but more versatile. for multi value.
+    # print(','.join(map(str, output)))  # Print array elements as comma separated strings. for multi-value.
+    # print('{}, {}'.format(output[0], output[1], end=''))  # Same results, but more versatile. for multi-value.
 
 
 if __name__ == '__main__':
