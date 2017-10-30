@@ -1,32 +1,50 @@
 import sys
 
 
-def main(*args):
+def main():
 
-    # Receive arguments.
+    # Get Args
+    args = _input_args()  # get arguments as an array from console/script parameters.
+
+    # Call main Logic
+    result = _main(args)
+
+    # Export a result in a correct way.
+    _export_result(result)
+
+
+def _main(args):
+    """Write Main Logic here for the contest.
+
+    :param args: arguments
+    :type args: list
+    :return: result
+    :rtype: depends on your logic.
+    """
+    # Extract arguments.
     arg1 = args[0]
     arg2 = args[1]
 
     # Write main logic here.
-    output = arg1 + arg2
+    result = [arg1*2, arg2*2]
 
-    # Export result in correct way.
-    _export_result(output)
+    # Return something.
+    return result
 
 
 def _input_args():
     # Comment-out appropriate pattern depends on subject.
 
-    # arguments = sys.argv[1:]  # ptn1: get args from command line option
-    arguments = input().split()  # ptn2: get args from 1 line prompt with space separated.
+    # arguments = sys.argv[1:]  # ptn1: get args from script parameters.
+    arguments = input().split()  # ptn2: get args from 1 line console prompt with space separated.
 
-    # for multi-line input, use this.
+    # for multi-line console input, use this.
     # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''])
 
     # Cast elements If you need.
-    # arguments = map(int, arguments)  # cast elements to int for example.
+    # arguments = list(map(int, arguments))  # cast elements to int for example.
 
-    return arguments
+    return arguments  # This will be array.
 
 
 def _get_args_from_multiple_lines(end_of_lines_char=['']):
@@ -44,23 +62,20 @@ def _get_args_from_multiple_lines(end_of_lines_char=['']):
             if arg in end_of_lines_char:
                 break
             args.append(arg)
-        except EOFError:  # Supported for EOF Style. (Very Rare case)
+        except EOFError:  # Supports EOF Style. (Very Rare case)
             break
     return args
 
 
-def _export_result(output):
+def _export_result(result):
     # Comment-out appropriate output pattern depends on subject.
 
-    # sys.stdout.write(output)  # No Line Feed, and arg must be string. for single value output.
-    # print(output)  # Output automatically evaluated and cast to strings. LF at the end. for single value output.
-    print(output, end='')  # No Line Feed version of above. for single value output.
-    # print(','.join(map(str, output)))  # Print array elements as comma separated strings. for multi-value.
-    # print('{}, {}'.format(output[0], output[1], end=''))  # Same results, but more versatile. for multi-value.
+    # sys.stdout.write(result)  # No Line Feed, and an result must be string (not useful). for single value output.
+    # print(result)  # The result will cast to strings. Line feed will be appended to the end. for single value output.
+    # print(result, end='')  # Same as above except Line Feed won't be appended. for single value output.
+    print(','.join(map(str, result)))  # Print array elements as comma separated strings. for multi-value.
+    # print('{}, {}'.format(result[0], result[1], end=''))  # Same as above, but more versatile. for multi-value.
 
 
 if __name__ == '__main__':
-
-    arguments = _input_args()
-    # Execute main Logic.
-    main(*arguments)
+    main()
