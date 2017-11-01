@@ -22,11 +22,25 @@ def _main(args):
     :rtype: depends on your logic.
     """
     # Extract arguments.
-    arg1 = args[0]
-    arg2 = args[1]
+    N = int(args[0])
+    Q = int(args[1])
+
+    alphabets = list((chr(ord('A') + i) for i in range(N)))
+
+    for i in range(0, len(alphabets)-1):
+        for j in range(0, len(alphabets)-1-i):
+            print('? {} {}'.format(alphabets[j], alphabets[j+1]))
+
+            comp_result = input()
+            if comp_result == '<':
+                pass
+            elif comp_result == '>':
+                alphabets[j], alphabets[j+1] = alphabets[j+1], alphabets[j]
+            else:
+                raise ValueError('input should either of "<" ">"')
 
     # Write main logic here.
-    result = [arg1*2, arg2*2]
+    result = alphabets
 
     # Return something.
     return result
@@ -73,8 +87,8 @@ def _export_result(result):
     # sys.stdout.write(result)  # No Line Feed, and an result must be string (not useful). for single value output.
     # print(result)  # The result will cast to strings. Line feed will be appended to the end. for single value output.
     # print(result, end='')  # Same as above except Line Feed won't be appended. for single value output.
-    print(','.join(map(str, result)))  # Print array elements as comma separated strings. for multi-value.
-    # print('{}, {}'.format(result[0], result[1], end=''))  # Same as above, but more versatile. for multi-value.
+    print('! '+ ''.join(map(str, result)))  # Print array elements as comma separated strings. for multi-value.
+    # print('! {}'.format(str(result)))  # Same as above, but more versatile. for multi-value.
 
 
 if __name__ == '__main__':
