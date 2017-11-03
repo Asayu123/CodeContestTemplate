@@ -31,7 +31,7 @@ def _main(args):
         for j in range(0, len(alphabets)-1-i):
             print('? {} {}'.format(alphabets[j], alphabets[j+1]))
 
-            comp_result = input()
+            comp_result = _input()
             if comp_result == '<':
                 pass
             elif comp_result == '>':
@@ -50,7 +50,7 @@ def _input_args():
     # Comment-out appropriate pattern depends on subject.
 
     # arguments = sys.argv[1:]  # ptn1: get args from script parameters.
-    arguments = input().split()  # ptn2: get args from 1 line console prompt with space separated.
+    arguments = _input().split()  # ptn2: get args from 1 line console prompt with space separated.
 
     # for multi-line console input, use this.
     # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''])
@@ -59,6 +59,11 @@ def _input_args():
     # arguments = list(map(int, arguments))  # cast elements to int for example.
 
     return arguments  # This will be array.
+
+
+def _input():
+    # If Subject requires interactive input, use this and patch mock in unittest.
+    return input()  # Change if necessary.
 
 
 def _get_args_from_multiple_lines(end_of_lines_char=['']):
