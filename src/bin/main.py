@@ -66,7 +66,7 @@ def _get_args_from_multiple_lines(end_of_lines_char=['']):
     args = []
     while True:
         try:
-            arg = input()
+            arg = _input()
             if arg in end_of_lines_char:
                 break
             args.append(arg)
