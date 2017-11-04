@@ -42,7 +42,7 @@ def _input_args():
     arguments = _input().split()  # ptn2: get args from 1 line console prompt with space separated.
 
     # for multi-line console input, use this.
-    # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''])
+    # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000)
 
     # Cast elements If you need.
     # arguments = list(map(int, arguments))  # cast elements to int for example.
@@ -55,16 +55,18 @@ def _input():
     return input()  # Change if necessary.
 
 
-def _get_args_from_multiple_lines(end_of_lines_char=['']):
+def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
     """Get arguments from multiple lines standard input.
 
     :param end_of_lines_char: Strings that indicate the end of lines.
     :type end_of_lines_char: list of str
+    :param limit: If a number of the input line are certain, you can use this param to close prompt immediately.
+    :type limit: int
     :return: args
     :rtype list of str
     """
     args = []
-    while True:
+    for i in range(limit):
         try:
             arg = _input()
             if arg in end_of_lines_char:
