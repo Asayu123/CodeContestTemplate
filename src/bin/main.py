@@ -9,8 +9,8 @@ def main():
     # Call main Logic
     result = _main(args)
 
-    # Export a result in a correct way.
-    _export_result(result)
+    # Output a result in a correct way.
+    _output_result(result)
 
 
 def _main(args):
@@ -77,7 +77,7 @@ def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
     return args
 
 
-def _export_result(result):
+def _output_result(result):
     # Comment-out appropriate output pattern depends on subject.
 
     # sys.stdout.write(result)  # No Line Feed, and an result must be string (not useful). for single value output.
