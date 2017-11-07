@@ -9,8 +9,8 @@ def main():
     # Call main Logic
     result = _main(args)
 
-    # Export a result in a correct way.
-    _export_result(result)
+    # Output a result in a correct way.
+    _output_result(result)
 
 
 def _main(args):
@@ -22,11 +22,14 @@ def _main(args):
     :rtype: depends on your logic.
     """
     # Extract arguments.
-    arg1 = args[0]
-    arg2 = args[1]
+    default_value = int(args[0])
+    num_of_append = int(args[1])
 
     # Write main logic here.
-    result = [arg1*2, arg2*2]
+    result = default_value
+    for i in range(num_of_append):
+        value = int(_input())  # Interactive input from stdin.
+        result += value
 
     # Return something.
     return result
@@ -36,10 +39,10 @@ def _input_args():
     # Comment-out appropriate pattern depends on subject.
 
     # arguments = sys.argv[1:]  # ptn1: get args from script parameters.
-    arguments = input().split()  # ptn2: get args from 1 line console prompt with space separated.
+    arguments = _input().split()  # ptn2: get args from 1 line console prompt with space separated.
 
     # for multi-line console input, use this.
-    # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''])
+    # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000)
 
     # Cast elements If you need.
     # arguments = list(map(int, arguments))  # cast elements to int for example.
@@ -47,18 +50,25 @@ def _input_args():
     return arguments  # This will be array.
 
 
-def _get_args_from_multiple_lines(end_of_lines_char=['']):
+def _input():
+    # If Subject requires interactive input, use this and patch mock in unittest.
+    return input()  # Change if necessary.
+
+
+def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
     """Get arguments from multiple lines standard input.
 
     :param end_of_lines_char: Strings that indicate the end of lines.
     :type end_of_lines_char: list of str
+    :param limit: If a number of the input line are certain, you can use this param to close prompt immediately.
+    :type limit: int
     :return: args
     :rtype list of str
     """
     args = []
-    while True:
+    for i in range(limit):
         try:
-            arg = input()
+            arg = _input()
             if arg in end_of_lines_char:
                 break
             args.append(arg)
@@ -67,14 +77,14 @@ def _get_args_from_multiple_lines(end_of_lines_char=['']):
     return args
 
 
-def _export_result(result):
+def _output_result(result):
     # Comment-out appropriate output pattern depends on subject.
 
     # sys.stdout.write(result)  # No Line Feed, and an result must be string (not useful). for single value output.
     # print(result)  # The result will cast to strings. Line feed will be appended to the end. for single value output.
     # print(result, end='')  # Same as above except Line Feed won't be appended. for single value output.
-    print(','.join(map(str, result)))  # Print array elements as comma separated strings. for multi-value.
-    # print('{}, {}'.format(result[0], result[1], end=''))  # Same as above, but more versatile. for multi-value.
+    # print(','.join(map(str, result)))  # Print array elements as comma separated strings. for multi-value.
+    print('ans={}'.format(str(result)))  # Same as above, but more versatile.
 
 
 if __name__ == '__main__':
