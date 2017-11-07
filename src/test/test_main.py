@@ -14,7 +14,7 @@ class TestMain(unittest.TestCase):
         """This function creates sub_test case for parameterized test.
         PLEASE define INPUT and OUTPUT Value HERE for test.
         :return: input_list, expected_list
-        :rtype list of list, list of test
+        :rtype list of list, list of str
         """
 
         input_list = [
@@ -43,9 +43,9 @@ class TestMain(unittest.TestCase):
             Caution, MagicMock raises StopIteration error when you call input function more than length of 'inputs'
             in main.py
         """
-        stdin_lines = MagicMock()
-        stdin_lines.side_effect = inputs  # you can emulate standard input lines by using this list.
-        return stdin_lines
+        stdin_mock = MagicMock()
+        stdin_mock.side_effect = inputs  # you can emulate standard input lines by using this list.
+        return stdin_mock
 
     @staticmethod
     def get_last_stdout_line(stdout):  # This method sometimes useful when you print results to stdout.
