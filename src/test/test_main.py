@@ -14,22 +14,22 @@ class TestMain(unittest.TestCase):
         """This function creates sub_test case for parameterized test.
         PLEASE define INPUT and OUTPUT Value HERE for test.
         :return: input_list, expected_list
-        :rtype list of list, list of str
+        :rtype list of list of str, list of list of str
         """
 
-        input_list = [
+        inputs = [
             ['0 3', '1', '2', '3'],
             ['0 2', '1', '2'],
             ['0 1', '1']
         ]
 
-        expected_list = [
-            'ans=6',
-            'ans=3',
-            'ans=1'
+        expected_outputs = [
+            ['ans=6'],
+            ['ans=3'],
+            ['ans=1']
         ]
 
-        return input_list, expected_list
+        return inputs, expected_outputs
 
     @staticmethod
     def get_input_mock(inputs=None):  # Use this mock if a contest requires interactive input.
@@ -48,18 +48,26 @@ class TestMain(unittest.TestCase):
         return stdin_mock
 
     @staticmethod
-    def get_last_stdout_line(stdout):  # This method sometimes useful when you print results to stdout.
+    def get_stdout_line(stdout, bottom=1):
+        """This method captures stdout lines and convert it to list of strings.
+        By Default, with no 'bottom' specified, only returns the last line as a list that length is 1.
+
+        :param stdout: test.support.captured_stdout context
+        :param bottom: A number of lines you want to capture from the bottom.
+        :type bottom: int
+        :rtype: list of str
+        """
         # If there are multiple outputs, stdout.getvalue returns combined one. so we need split to get a specific line.
-        return stdout.getvalue().split('\n')[-2]
+        return stdout.getvalue().split('\n')[-(bottom + 1):-1]
 
     def test_main(self):
         """Test Whole things, including standard Input/Output by using input mocking.
         Use this test if the contest requires input from stdin, and requires export result to stdout.
         """
 
-        input_list, expected_list = self.generate_subtest_case() # Get test parameters.
+        input_list, expected_outputs = self.generate_subtest_case() # Get test parameters.
 
-        for input_lines, expected_result in zip(input_list, expected_list):  # extract params for sub_test.
+        for input_lines, expected_result in zip(input_list, expected_outputs):  # extract params for sub_test.
             # Execute sub_test for each params.
             with self.subTest(input=input_lines, output=expected_result):
 
@@ -69,7 +77,7 @@ class TestMain(unittest.TestCase):
                     # Execute main logic with capturing standard output.
                     with captured_stdout() as stdout:
                         main()
-                        actual_result = self.get_last_stdout_line(stdout)
+                        actual_result = self.get_stdout_line(stdout=stdout, bottom=1)
 
                         self.assertEqual(expected_result, actual_result)
 
