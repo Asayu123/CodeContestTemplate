@@ -24,9 +24,9 @@ class TestMain(unittest.TestCase):
         ]
 
         expected_outputs = [
-            ['ans=6'],
-            ['ans=3'],
-            ['ans=1']
+            ['6'],
+            ['3'],
+            ['1']
         ]
 
         return inputs, expected_outputs
