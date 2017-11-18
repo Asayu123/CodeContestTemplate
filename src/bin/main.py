@@ -84,7 +84,7 @@ def _output_result(result):
     # print(result)  # The result will cast to strings. Line feed will be appended to the end. for single value output.
     # print(result, end='')  # Same as above except Line Feed won't be appended. for single value output.
     # print(','.join(map(str, result)))  # Print array elements as comma separated strings. for multi-value.
-    print('ans={}'.format(str(result)))  # Same as above, but more versatile.
+    print('{}'.format(str(result)))  # Same as above, but more versatile.
 
 
 if __name__ == '__main__':
