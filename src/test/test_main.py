@@ -76,7 +76,7 @@ class TestMain(unittest.TestCase):
 
                     # Execute main logic with capturing standard output.
                     with captured_stdout() as stdout:
-                        main()
+                        main()  # If mock raises StopIteration here, it means that input method has been called more than the number of supplied lines by Mock.
                         actual_result = self.get_stdout_line(stdout=stdout, bottom=1)
 
                         self.assertEqual(expected_result, actual_result)
