@@ -72,7 +72,7 @@ def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
             if arg in end_of_lines_char:
                 break
             args.append(arg)
-        except EOFError:  # Supports EOF Style. (Very Rare case)
+        except (EOFError, StopIteration):  # Supports EOF Style. (Very Rare case), StopIteration for mock.
             break
     return args
 
