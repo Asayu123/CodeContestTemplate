@@ -9,14 +9,14 @@ class StdInOutTestCase(StdInOutTestMixin, TestCase):
     # If the contest site uses Stdin and Stdout for evaluation, use this test case.
     # See the definition of the Mixin class to know the details of what class attributes you need to override.
     target_method = main
-    input_cases = [
+    input_cases = [  # Format: [testCase[inputLine]]
         ['0 3', '1', '2', '3'],
         ['0 2', '1', '2'],
         ['0 1', '1']
     ]
 
-    expected_outputs = [
-        ['6'],
+    expected_outputs = [  # Format: [testCase[outputLine]]
+        ['6'],  # The order needs to correspond to that of input_cases.
         ['3'],
         ['1']
     ]
