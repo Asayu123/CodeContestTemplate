@@ -2,11 +2,11 @@
 from unittest import TestCase
 
 from src.bin.main import main  # Change this source based on what you want to test.
-from src.test.base.mixins import EndToEndTestMixin
+from src.test.base.mixins import StdInOutTestCase
 
 
-class EndToEndTestCase(EndToEndTestMixin, TestCase):
-    # This is a template of a TestCase for code contest program.
+class StdInOutTestCase(StdInOutTestCase, TestCase):
+    # If the contest site uses Stdin and Stdout for evaluation, use this test case.
     # See the definition of the Mixin class to know the details of what class attributes you need to override.
     target_method = main
     input_cases = [

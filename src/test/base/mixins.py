@@ -3,7 +3,7 @@ from unittest.mock import patch
 from test.support import captured_stdout
 
 
-class EndToEndTestMixin(object):
+class StdInOutTestCase(object):
     """This class implements basic test cases.
     Only you need to do is mix in this class with unittest.TestCase in a subclass, and override class attributes.
     This mixin assumes that all input values are given from stdin, and all result is dumped to the last several lines of stdout.
@@ -71,7 +71,7 @@ class EndToEndTestMixin(object):
             with self.subTest(input=input_lines, output=expected_result):
 
                 # Emulate input_lines by mock
-                with patch(target='src.bin.main._input', new=self.get_input_mock(inputs=input_lines)):
+                with patch(target='builtins.input', new=self.get_input_mock(inputs=input_lines)):
 
                     # Execute main logic with capturing standard output.
                     with captured_stdout() as stdout:
