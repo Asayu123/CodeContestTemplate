@@ -26,13 +26,17 @@ class MainRoutineTestCase(TestCase):
     # If the contest site uses return value for evaluation, use this test case.
 
     def test_main(self):
-        """Test for Main Logic Only.
-        Use This test if the contest only evaluates method level Input/Output and not interactive.
-        """
+        """Test Return value."""
 
-        args = ['1', '2']
-        expected = ['11', '22']
+        test_cases = [  # Format: [testCase[positional argument]]
+            [1, 2],  # Positional arguments per a test case.
+        ]
 
-        result = main(*args)
+        expected_return_values = [  # Format: [testCase[expectedReturnValue]]
+            11,  # return value/values per a test case.
+        ]
 
-        self.assertEqual(expected, result)
+        for args, expected_return_value in zip(test_cases, expected_return_values):
+            with self.subTest(args=args):
+                result = main(*args)
+                self.assertEqual(result, expected_return_value)
