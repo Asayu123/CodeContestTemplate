@@ -1,38 +1,9 @@
 import sys
 
 
-def main():
-
-    # Get Args
-    args = _input_args()  # get arguments as an array from console/script parameters.
-
-    # Call main Logic
-    result = _main(args)
-
-    # Output a result in a correct way.
-    _output_result(result)
-
-
-def _main(args):
-    """Write Main Logic here for the contest.
-
-    :param args: arguments
-    :type args: list
-    :return: result
-    :rtype: depends on your logic.
-    """
-    # Extract arguments.
-    default_value = int(args[0])
-    num_of_append = int(args[1])
-
-    # Write main logic here.
-    result = default_value
-    for i in range(num_of_append):
-        value = int(_input())  # Interactive input from stdin.
-        result += value
-
-    # Return something.
-    return result
+def main(*args, **kwargs):
+    """Write Codes for contest here."""
+    pass
 
 
 def _input_args():

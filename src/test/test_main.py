@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from unittest import TestCase, skip
+from unittest import TestCase
 
-from src.bin.main import main, _main  # Change this source based on what you want to test.
+from src.bin.main import main  # Change this source based on what you want to test.
 from src.test.base.mixins import EndToEndTestMixin
 
 
@@ -21,8 +21,11 @@ class EndToEndTestCase(EndToEndTestMixin, TestCase):
         ['1']
     ]
 
-    @skip
-    def test__main(self):
+
+class MainRoutineTestCase(TestCase):
+    # If the contest site uses return value for evaluation, use this test case.
+
+    def test_main(self):
         """Test for Main Logic Only.
         Use This test if the contest only evaluates method level Input/Output and not interactive.
         """
@@ -30,6 +33,6 @@ class EndToEndTestCase(EndToEndTestMixin, TestCase):
         args = ['1', '2']
         expected = ['11', '22']
 
-        result = _main(args)
+        result = main(*args)
 
         self.assertEqual(expected, result)
