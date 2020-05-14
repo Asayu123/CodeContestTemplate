@@ -1,11 +1,9 @@
-import sys
-
-
 def main(*args, **kwargs):
     """Write Codes for contest here."""
     pass
 
 
+# Followings are examples, you don't need to modify them.
 def _input_args():
     """This is an example of dealing data from stdin."""
     # Use an appropriate output pattern depends on the input.
