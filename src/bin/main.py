@@ -7,12 +7,13 @@ def main(*args, **kwargs):
 
 
 def _input_args():
-    # Comment-out appropriate pattern depends on subject.
+    """This is an example of dealing data from stdin."""
+    # Use an appropriate output pattern depends on the input.
 
     # arguments = sys.argv[1:]  # ptn1: get args from script parameters.
     arguments = input().split()  # ptn2: get args from 1 line console prompt with space separated.
 
-    # for multi-line console input, use this.
+    # If input has multiple lines and does not have a line count, use this.
     # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000)
 
     # Cast elements If you need.
@@ -22,7 +23,7 @@ def _input_args():
 
 
 def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
-    """Get arguments from multiple lines standard input.
+    """Get multiple data from multiple lines of standard input.
 
     :param end_of_lines_char: Strings that indicate the end of lines.
     :type end_of_lines_char: list of str
@@ -44,7 +45,8 @@ def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
 
 
 def _output_result(result):
-    # Comment-out appropriate output pattern depends on subject.
+    """This is an example of writing data to stdout."""
+    # Use an appropriate output pattern depends on the problem.
 
     # sys.stdout.write(result)  # No Line Feed, and an result must be string (not useful). for single value output.
     # print(result)  # The result will cast to strings. Line feed will be appended to the end. for single value output.
