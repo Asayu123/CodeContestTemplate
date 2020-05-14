@@ -2,10 +2,10 @@
 from unittest import TestCase
 
 from src.bin.main import main  # Change this source based on what you want to test.
-from src.test.base.mixins import StdInOutTestCase
+from src.test.base.mixins import StdInOutTestMixin
 
 
-class StdInOutTestCase(StdInOutTestCase, TestCase):
+class StdInOutTestCase(StdInOutTestMixin, TestCase):
     # If the contest site uses Stdin and Stdout for evaluation, use this test case.
     # See the definition of the Mixin class to know the details of what class attributes you need to override.
     target_method = main

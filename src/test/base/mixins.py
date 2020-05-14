@@ -3,7 +3,7 @@ from unittest.mock import patch
 from test.support import captured_stdout
 
 
-class StdInOutTestCase(object):
+class StdInOutTestMixin(object):
     """This class implements basic test cases.
     Only you need to do is mix in this class with unittest.TestCase in a subclass, and override class attributes.
     This mixin assumes that all input values are given from stdin, and all result is dumped to the last several lines of stdout.
