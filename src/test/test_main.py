@@ -10,15 +10,15 @@ class StdInOutTestCase(StdInOutTestMixin, TestCase):
     # See the definition of the Mixin class to know the details of what class attributes you need to override.
     target_method = main
     input_cases = [  # Format: [testCase[inputLine]]
-        ['0 3', '1', '2', '3'],
-        ['0 2', '1', '2'],
-        ['0 1', '1']
+        ['0 3', '1', '2', '3'],   # Note: You can also define multiple input lines by using the following literal.
+        ['0 2', '1', '2'],  # '''<Original Text includes line-feed>'''.splitlines()
+        ['0 1', '1'],
     ]
 
     expected_outputs = [  # Format: [testCase[outputLine]]
         ['6'],  # The order needs to correspond to that of input_cases.
-        ['3'],
-        ['1']
+        ['3'],  # Note: You can also define multiple expect output lines by using the following literal.
+        ['1'],  # '''<Original Text includes line-feed>'''.splitlines()
     ]
 
 
