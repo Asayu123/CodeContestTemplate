@@ -18,6 +18,9 @@ Templates and Test Suites for Programming Contests and Online interviews.
 * Then, execute unit test on project root by the following command.
     * `python -m unittest src.test.test_main.StdInOutTestCase` or
     * `python -m unittest src.test.test_main.MainRoutineTestCase`
-    
+
+## Tips
+* Use git stash / unstash when you solve multiple problems at the same time.
+
 ## How to Contribute
 * Please feel free to send pull-request to make the template more practical.
