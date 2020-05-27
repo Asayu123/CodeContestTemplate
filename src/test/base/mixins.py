@@ -3,7 +3,7 @@ from unittest.mock import patch
 from test.support import captured_stdout
 
 
-class EndToEndTestMixin(object):
+class StdInOutTestMixin(object):
     """This class implements basic test cases.
     Only you need to do is mix in this class with unittest.TestCase in a subclass, and override class attributes.
     This mixin assumes that all input values are given from stdin, and all result is dumped to the last several lines of stdout.
@@ -62,20 +62,20 @@ class EndToEndTestMixin(object):
         return stdout.getvalue().split('\n')[-(bottom + 1):-1]
 
     def test_e2e(self):
-        """Test Whole things, including standard Input/Output by using input mocking.
+        """Test Whole things, including standard Input/Output by using input mock.
         Use this test if the contest requires input from stdin, and requires the export result to stdout.
         """
 
-        for input_lines, expected_result in zip(self.__class__.input_cases, self.__class__.expected_outputs):  # extract params for sub_test.
+        for input_lines, expected_output_lines in zip(self.__class__.input_cases, self.__class__.expected_outputs):  # extract params for sub_test.
             # Execute sub_test for each test cases.
-            with self.subTest(input=input_lines, output=expected_result):
+            with self.subTest(input_lines=input_lines, expected_output_lines=expected_output_lines):
 
                 # Emulate input_lines by mock
-                with patch(target='src.bin.main._input', new=self.get_input_mock(inputs=input_lines)):
+                with patch(target='builtins.input', new=self.get_input_mock(inputs=input_lines)):
 
                     # Execute main logic with capturing standard output.
                     with captured_stdout() as stdout:
                         self.__class__.target_method()  # If mock raises StopIteration here, it means that the input method has been called more than the number of supplied lines by Mock.
-                        actual_result = self.get_stdout_line(stdout=stdout, bottom=len(expected_result))
+                        actual_output = self.get_stdout_line(stdout=stdout, bottom=len(expected_output_lines))
 
-                        self.assertEqual(expected_result, actual_result)
+                        self.assertEqual(actual_output, expected_output_lines)

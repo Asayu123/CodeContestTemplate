@@ -1,47 +1,17 @@
-import sys
+def main(*args, **kwargs):
+    """Write Codes for contest here."""
+    pass
 
 
-def main():
-
-    # Get Args
-    args = _input_args()  # get arguments as an array from console/script parameters.
-
-    # Call main Logic
-    result = _main(args)
-
-    # Output a result in a correct way.
-    _output_result(result)
-
-
-def _main(args):
-    """Write Main Logic here for the contest.
-
-    :param args: arguments
-    :type args: list
-    :return: result
-    :rtype: depends on your logic.
-    """
-    # Extract arguments.
-    default_value = int(args[0])
-    num_of_append = int(args[1])
-
-    # Write main logic here.
-    result = default_value
-    for i in range(num_of_append):
-        value = int(_input())  # Interactive input from stdin.
-        result += value
-
-    # Return something.
-    return result
-
-
+# Followings are examples, you don't need to modify them.
 def _input_args():
-    # Comment-out appropriate pattern depends on subject.
+    """This is an example of dealing data from stdin."""
+    # Use an appropriate output pattern depends on the input.
 
     # arguments = sys.argv[1:]  # ptn1: get args from script parameters.
-    arguments = _input().split()  # ptn2: get args from 1 line console prompt with space separated.
+    arguments = input().split()  # ptn2: get args from 1 line console prompt with space separated.
 
-    # for multi-line console input, use this.
+    # If input has multiple lines and does not have a line count, use this.
     # arguments = _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000)
 
     # Cast elements If you need.
@@ -50,13 +20,8 @@ def _input_args():
     return arguments  # This will be array.
 
 
-def _input():
-    # If Subject requires interactive input, use this and patch mock in unittest.
-    return input()  # Change if necessary.
-
-
 def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
-    """Get arguments from multiple lines standard input.
+    """Get multiple data from multiple lines of standard input.
 
     :param end_of_lines_char: Strings that indicate the end of lines.
     :type end_of_lines_char: list of str
@@ -68,7 +33,7 @@ def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
     args = []
     for i in range(limit):
         try:
-            arg = _input()
+            arg = input()
             if arg in end_of_lines_char:
                 break
             args.append(arg)
@@ -78,7 +43,8 @@ def _get_args_from_multiple_lines(end_of_lines_char=[''], limit=10000000):
 
 
 def _output_result(result):
-    # Comment-out appropriate output pattern depends on subject.
+    """This is an example of writing data to stdout."""
+    # Use an appropriate output pattern depends on the problem.
 
     # sys.stdout.write(result)  # No Line Feed, and an result must be string (not useful). for single value output.
     # print(result)  # The result will cast to strings. Line feed will be appended to the end. for single value output.
